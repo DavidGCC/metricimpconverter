@@ -35,11 +35,11 @@ function ConvertHandler() {
                 break;
             }
         }
-        result = result === "L" ? result : result.toLowerCase();
-        if (!["gal", "L", "kg", "lbs", "km", "mi"].includes(result)) {
+        result = result.toLowerCase();
+        if (!["gal", "l", "kg", "lbs", "km", "mi"].includes(result)) {
             return "invalid unit";
         }
-        return result;
+        return result === "l" ? result.toUpperCase() : result;
     };
 
     this.getReturnUnit = function (initUnit) {

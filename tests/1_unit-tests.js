@@ -52,7 +52,7 @@ suite('Unit Tests', function(){
         });
 
         test("convertHandler should correctly return an error for an invalid input unit", () => {
-            assert.equal(convertHandler.getUnit("2l"), "invalid unit");
+            assert.equal(convertHandler.getUnit("2klgrms"), "invalid unit");
         });
 
         test("convertHandler should return the correct return unit for each valid input unit", () => {
