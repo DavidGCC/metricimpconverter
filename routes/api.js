@@ -7,14 +7,14 @@ const ConvertHandler = require('../controllers/convertHandler.js');
 const ch = new ConvertHandler();
 
 const checkValidity = (num, unit) => {
-    if (num === "" && unit === "") {
+    if (num === "invalid number" && unit === "invalid unit") {
         throw new Error("invalid number and unit");
     }
-    if (!num) {
-        throw new Error("invalid number");
+    if (num === "invalid number") {
+        throw new Error(num);
     }
-    if (!unit) {
-        throw new Error("invalid unit");
+    if (unit === "invalid unit") {
+        throw new Error(unit);
     }
 }
 

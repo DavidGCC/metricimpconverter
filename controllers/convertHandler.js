@@ -10,12 +10,21 @@ function ConvertHandler() {
         if (result === "") {
             result = "1";
         }
+        let slash = 0;
+        let dot = 0;
+        [...result].forEach(char => {
+            if (char === ".") dot++;
+            if (char === "/") slash++;
+        })
         try {
+            if (slash > 1 || dot > 1) {
+                throw new Error();
+            }
             result = eval(result);
         } catch (error) {
-            return "";
+            return "invalid number";
         }
-        return result;
+        return Number(result);
     };
 
     this.getUnit = function (input) {
@@ -28,7 +37,7 @@ function ConvertHandler() {
         }
         result = result === "L" ? result : result.toLowerCase();
         if (!["gal", "L", "kg", "lbs", "km", "mi"].includes(result)) {
-            return "";
+            return "invalid unit";
         }
         return result;
     };
